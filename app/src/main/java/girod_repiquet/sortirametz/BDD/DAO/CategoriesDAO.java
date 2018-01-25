@@ -1,4 +1,4 @@
-package girod_repiquet.sortirametz.DAO;
+package girod_repiquet.sortirametz.BDD.DAO;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import girod_repiquet.sortirametz.Model.Categorie;
-import girod_repiquet.sortirametz.MySQLiteHelper;
+import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
 
 /**
  * Created by Zachizac on 22/01/2018.

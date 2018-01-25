@@ -1,10 +1,9 @@
 package girod_repiquet.sortirametz.Listener;
 
 import android.content.DialogInterface;
-import android.view.View;
 
 
-import girod_repiquet.sortirametz.FragmentBDDManager;
+import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
 
 /**
  * Created by Zachizac on 24/01/2018.

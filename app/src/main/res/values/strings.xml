@@ -5,6 +5,7 @@
     <!--    Permissions    -->
     <string name="permission_motif">La localisation est nécessaire pour pouvoir utiliser cette application car elle utilise un googleMap.</string>
     <string name="location_permission_denied">La localisation est nécessaire pour pouvoir utiliser cette application. Merci de réouvrir cette application et accepter l\'accès à la localisation.</string>
+    <string name="permission_toast">Sans permission, l\'application ne peut pas être utilisée. Veuillez la redémarrer.</string>
 
     <!--    Del dialog      -->
     <string name="delDialog">Êtes-vous sûr de vouloir supprimer ce site ?</string>

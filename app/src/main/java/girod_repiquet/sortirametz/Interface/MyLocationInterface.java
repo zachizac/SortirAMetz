@@ -1,4 +1,4 @@
-package girod_repiquet.sortirametz;
+package girod_repiquet.sortirametz.Interface;
 
 import android.location.Location;
 

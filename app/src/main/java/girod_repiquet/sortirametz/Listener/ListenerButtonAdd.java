@@ -3,8 +3,8 @@ package girod_repiquet.sortirametz.Listener;
 import android.view.View;
 import android.widget.Button;
 
-import girod_repiquet.sortirametz.Dialog.AddDialog;
-import girod_repiquet.sortirametz.FragmentBDDManager;
+import girod_repiquet.sortirametz.Fragment.Dialog.AddDialog;
+import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
 
 /**
  * Created by Zachizac on 24/01/2018.

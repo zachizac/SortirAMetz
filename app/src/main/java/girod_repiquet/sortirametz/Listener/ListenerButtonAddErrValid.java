@@ -4,8 +4,8 @@ package girod_repiquet.sortirametz.Listener;
 
 import android.content.DialogInterface;
 
-import girod_repiquet.sortirametz.Dialog.AddDialog;
-import girod_repiquet.sortirametz.FragmentBDDManager;
+import girod_repiquet.sortirametz.Fragment.Dialog.AddDialog;
+import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
 
 public class ListenerButtonAddErrValid implements DialogInterface.OnClickListener {
 

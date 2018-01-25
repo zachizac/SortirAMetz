@@ -1,4 +1,4 @@
-package girod_repiquet.sortirametz;
+package girod_repiquet.sortirametz.Fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -28,13 +28,18 @@ import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import girod_repiquet.sortirametz.DAO.CategoriesDAO;
-import girod_repiquet.sortirametz.DAO.SitesDAO;
+import girod_repiquet.sortirametz.Adapter.PopupAdapter;
+import girod_repiquet.sortirametz.BDD.DAO.CategoriesDAO;
+import girod_repiquet.sortirametz.BDD.DAO.SitesDAO;
 import girod_repiquet.sortirametz.Listener.ListenerSpinnerCat;
 import girod_repiquet.sortirametz.Listener.ListenerLocationChange;
 import girod_repiquet.sortirametz.Listener.ListenerSpinnerRay;
 import girod_repiquet.sortirametz.Model.Categorie;
 import girod_repiquet.sortirametz.Model.Site;
+import girod_repiquet.sortirametz.Interface.MyLocationInterface;
+import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
+import girod_repiquet.sortirametz.Permission;
+import girod_repiquet.sortirametz.R;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -247,7 +252,13 @@ public class FragmentMap extends Fragment implements
                 values = sitesDAO.getAllSites();
             }
 
-            Location loc = getMyLocation();
+            Location loc;
+
+            if(ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
+                loc = null;
+            }else{
+                loc = getMyLocation();
+            }
 
             updateLocation(loc);
 

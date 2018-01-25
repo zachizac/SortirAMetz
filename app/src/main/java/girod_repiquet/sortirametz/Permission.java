@@ -112,11 +112,13 @@ public abstract class Permission {
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);
             if (mFermeActivite) {
-                Toast.makeText(getActivity(),
-                        R.string.permission_motif,
-                        Toast.LENGTH_SHORT)
-                        .show();
-                getActivity().finish();
+                if(getActivity()!=null) {
+                    Toast.makeText(getActivity(),
+                            R.string.permission_toast,
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    getActivity().finish();
+                }
             }
         }
     }
@@ -156,9 +158,11 @@ public abstract class Permission {
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);
             if (mFermeActivite) {
-                Toast.makeText(getActivity(), R.string.permission_motif,
-                        Toast.LENGTH_SHORT).show();
-                getActivity().finish();
+                if(getActivity()!=null) {
+                    Toast.makeText(getActivity(), R.string.permission_toast,
+                            Toast.LENGTH_SHORT).show();
+                    getActivity().finish();
+                }
             }
         }
     }

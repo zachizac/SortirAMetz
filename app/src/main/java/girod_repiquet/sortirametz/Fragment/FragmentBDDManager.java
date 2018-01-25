@@ -1,4 +1,4 @@
-package girod_repiquet.sortirametz;
+package girod_repiquet.sortirametz.Fragment;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -14,12 +14,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import girod_repiquet.sortirametz.DAO.CategoriesDAO;
-import girod_repiquet.sortirametz.DAO.SitesDAO;
+import girod_repiquet.sortirametz.BDD.DAO.CategoriesDAO;
+import girod_repiquet.sortirametz.BDD.DAO.SitesDAO;
 import girod_repiquet.sortirametz.Listener.ListenerButtonAdd;
 import girod_repiquet.sortirametz.Listener.ListenerButtonDel;
 import girod_repiquet.sortirametz.Listener.ListenerListViewClick;
 import girod_repiquet.sortirametz.Model.Site;
+import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
+import girod_repiquet.sortirametz.R;
 
 /**
  * Created by Zachizac on 22/01/2018.

@@ -1,4 +1,4 @@
-package girod_repiquet.sortirametz;
+package girod_repiquet.sortirametz.Adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.model.Marker;
+
+import girod_repiquet.sortirametz.R;
 
 /**
  * Created by Zachizac on 24/01/2018.
@@ -15,9 +17,9 @@ import com.google.android.gms.maps.model.Marker;
 public class PopupAdapter implements InfoWindowAdapter {
 
     private View popup=null;
-    private LayoutInflater inflater=null;
+    private LayoutInflater inflater;
 
-    PopupAdapter(LayoutInflater inflater) {
+    public PopupAdapter(LayoutInflater inflater) {
         this.inflater=inflater;
     }
 
@@ -33,10 +35,10 @@ public class PopupAdapter implements InfoWindowAdapter {
             popup=inflater.inflate(R.layout.popup, null);
         }
 
-        TextView tv=(TextView)popup.findViewById(R.id.title);
+        TextView tv=popup.findViewById(R.id.title);
 
         tv.setText(marker.getTitle());
-        tv=(TextView)popup.findViewById(R.id.snippet);
+        tv=popup.findViewById(R.id.snippet);
         tv.setText(marker.getSnippet());
 
         return(popup);

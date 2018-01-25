@@ -4,8 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import girod_repiquet.sortirametz.FragmentBDDManager;
-import girod_repiquet.sortirametz.FragmentMap;
+import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
 
 /**
  * Created by Zachizac on 24/01/2018.

@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-import girod_repiquet.sortirametz.FragmentMap;
+import girod_repiquet.sortirametz.Fragment.FragmentMap;
 
 /**
  * Created by Zachizac on 24/01/2018.

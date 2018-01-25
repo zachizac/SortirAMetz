@@ -11,8 +11,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
 import android.os.Bundle;
 
-import girod_repiquet.sortirametz.DAO.CategoriesDAO;
-import girod_repiquet.sortirametz.DAO.SitesDAO;
+import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
+import girod_repiquet.sortirametz.BDD.DAO.CategoriesDAO;
+import girod_repiquet.sortirametz.BDD.DAO.SitesDAO;
+import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
+import girod_repiquet.sortirametz.Fragment.FragmentMap;
+import girod_repiquet.sortirametz.Interface.MyLocationInterface;
 import girod_repiquet.sortirametz.Listener.ListenerButtonBDD;
 import girod_repiquet.sortirametz.Listener.ListenerButtonMap;
 
@@ -21,11 +25,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
     final FragmentBDDManager db_frag = new FragmentBDDManager();
     final FragmentMap map_frag = new FragmentMap();
 
-    private MySQLiteHelper dbHelper;
-    private CategoriesDAO categoriesDAO;
-    private SitesDAO sitesDAO;
-
-    private Location myLocation;
+    private String fragActif;
 
     private boolean permissionValide = false;
 
@@ -47,6 +47,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
         FragmentTransaction ft = m.beginTransaction();
         ft.add(R.id.contentView, map_frag);
         ft.commit();
+        fragActif = "map";
 
     }
 
@@ -57,24 +58,28 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
     protected void onResumeFragments() {
         super.onResumeFragments();
         if (permissionValide) {
+            permissionValide = false;
             // Permission was not granted, display error dialog.
             showMissingPermissionError();
-            permissionValide = false;
         }
-        FragmentManager m = getSupportFragmentManager();
-        FragmentTransaction ft = m.beginTransaction();
 
-        ft.replace(R.id.contentView, db_frag);
-        ft.addToBackStack(null);
+        if (fragActif.equals("map")) {
+        }else {
+            FragmentManager m = getSupportFragmentManager();
+            FragmentTransaction ft = m.beginTransaction();
 
-        ft.commit();
+            ft.replace(R.id.contentView, db_frag);
+            ft.addToBackStack(null);
 
-        m = getSupportFragmentManager();
-        ft = m.beginTransaction();
-        ft.replace(R.id.contentView, map_frag);
-        ft.addToBackStack(null);
+            ft.commit();
 
-        ft.commit();
+            m = getSupportFragmentManager();
+            ft = m.beginTransaction();
+            ft.replace(R.id.contentView, map_frag);
+            ft.addToBackStack(null);
+
+            ft.commit();
+        }
     }
 
     /**
@@ -124,11 +129,6 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
 //        frag.updateLocation(loc);
     }
 
-
-    public Location getMyLocation() {
-        return myLocation;
-    }
-
     public Fragment getDb_frag() {
         return db_frag;
     }
@@ -137,4 +137,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
         return map_frag;
     }
 
+    public void setFragActif(String fragActif) {
+        this.fragActif = fragActif;
+    }
 }

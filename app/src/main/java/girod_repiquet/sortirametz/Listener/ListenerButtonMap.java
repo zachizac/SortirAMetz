@@ -30,6 +30,8 @@ public class ListenerButtonMap implements Button.OnClickListener{
         ft.addToBackStack(null);
 
         ft.commit();
+
+        activity.setFragActif("Map");
     }
 
 }

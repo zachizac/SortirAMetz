@@ -1,23 +1,20 @@
-package girod_repiquet.sortirametz.Dialog;
+package girod_repiquet.sortirametz.Fragment.Dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.List;
 
-import girod_repiquet.sortirametz.DAO.CategoriesDAO;
-import girod_repiquet.sortirametz.FragmentBDDManager;
+import girod_repiquet.sortirametz.BDD.DAO.CategoriesDAO;
+import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
 import girod_repiquet.sortirametz.Listener.ListenerButtonValidAdd;
-import girod_repiquet.sortirametz.MySQLiteHelper;
+import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
 import girod_repiquet.sortirametz.R;
 
 /**

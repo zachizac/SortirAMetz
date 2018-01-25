@@ -1,12 +1,9 @@
-package girod_repiquet.sortirametz;
+package girod_repiquet.sortirametz.BDD;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import girod_repiquet.sortirametz.Model.Categorie;
 
 /**
  * Created by Zachizac on 22/01/2018.

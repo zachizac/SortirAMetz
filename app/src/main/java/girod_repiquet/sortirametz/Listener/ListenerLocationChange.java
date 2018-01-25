@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 
-import girod_repiquet.sortirametz.FragmentMap;
+import girod_repiquet.sortirametz.Fragment.FragmentMap;
 
 /**
  * Created by Zachizac on 22/01/2018.

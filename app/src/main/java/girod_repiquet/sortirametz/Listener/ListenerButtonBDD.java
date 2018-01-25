@@ -29,5 +29,7 @@ public class ListenerButtonBDD implements Button.OnClickListener{
         ft.addToBackStack(null);
 
         ft.commit();
+
+        activity.setFragActif("BDD");
     }
 }

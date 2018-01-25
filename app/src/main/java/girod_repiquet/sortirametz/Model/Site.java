@@ -1,7 +1,5 @@
 package girod_repiquet.sortirametz.Model;
 
-import girod_repiquet.sortirametz.DAO.CategoriesDAO;
-
 /**
  * Created by Zachizac on 22/01/2018.
  * Modèle des sites à afficher sur la carte
