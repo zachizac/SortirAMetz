@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SortirAMetz</string>
+    <string name="title_activity_maps">SortirAMetz</string>
+
+    <!--    Permissions    -->
+    <string name="permission_motif">La localisation est nécessaire pour pouvoir utiliser cette application car elle utilise un googleMap.</string>
+    <string name="location_permission_denied">La localisation est nécessaire pour pouvoir utiliser cette application. Merci de réouvrir cette application et accepter l\'accès à la localisation.</string>
+
+    <!--    Del dialog      -->
+    <string name="delDialog">Êtes-vous sûr de vouloir supprimer ce site ?</string>
+    <string name="ok">Valider</string>
+    <string name="cancel">Annuler</string>
+
+    <!--    Add dialog      -->
+    <string name="addExplanation">Le nouveau site sera créé sur votre dernière localisation connue.</string>
+    <string name="name">Nom du site</string>
+    <string name="adress">Adresse du site</string>
+    <string name="resume">Court résumé</string>
+    <string name="category">Catégorie du site</string>
+
+    <!--    Err dialog      -->
+    <string name="errDialog">Vous ne pouvez pas créer de site sans catégorie !</string>
+    <string name="ok2">Ok</string>
+
+</resources>
