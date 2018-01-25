@@ -210,7 +210,7 @@ public class FragmentMap extends Fragment implements
      * @return
      */
     @SuppressLint("MissingPermission")
-    public Location getMyLocationInterface() {
+    public Location getMyLocation() {
         // Get location from GPS if it's available
         LocationManager lm = (LocationManager)this.getActivity().getSystemService(Context.LOCATION_SERVICE);
         Location myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -247,7 +247,7 @@ public class FragmentMap extends Fragment implements
                 values = sitesDAO.getAllSites();
             }
 
-            Location loc = getMyLocationInterface();
+            Location loc = getMyLocation();
 
             updateLocation(loc);
 
