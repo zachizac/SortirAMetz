@@ -4,7 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.support.v4.app.ActivityCompat;
 
-import girod_repiquet.sortirametz.Permission.RationaleDialog;
+import girod_repiquet.sortirametz.Fragment.Dialog.RationaleDialog;
 
 
 public class ListenerButtonPermission implements DialogInterface.OnClickListener {

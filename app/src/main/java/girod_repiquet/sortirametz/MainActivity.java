@@ -11,9 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
 import android.os.Bundle;
 
-import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
-import girod_repiquet.sortirametz.BDD.DAO.CategoriesDAO;
-import girod_repiquet.sortirametz.BDD.DAO.SitesDAO;
+import girod_repiquet.sortirametz.Fragment.Dialog.PermissionDeniedDialog;
 import girod_repiquet.sortirametz.Fragment.FragmentBDDManager;
 import girod_repiquet.sortirametz.Fragment.FragmentMap;
 import girod_repiquet.sortirametz.Interface.MyLocationInterface;
@@ -26,6 +24,8 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
     final FragmentMap map_frag = new FragmentMap();
 
     private String fragActif;
+
+    private PermissionUtils permission = new PermissionUtils();
 
     private boolean permissionValide = false;
 
@@ -59,11 +59,11 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
         super.onResumeFragments();
         if (permissionValide) {
             permissionValide = false;
-            // Permission was not granted, display error dialog.
+            // PermissionUtils was not granted, display error dialog.
             showMissingPermissionError();
         }
 
-        if (fragActif.equals("map")) {
+        if(fragActif.equals("map")) {
         }else {
             FragmentManager m = getSupportFragmentManager();
             FragmentTransaction ft = m.beginTransaction();
@@ -86,7 +86,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
      * Crée le dialogue de permission manquante
      */
     private void showMissingPermissionError() {
-        Permission.PermissionDeniedDialog
+        PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
 
@@ -97,7 +97,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
             return;
         }
 
-        if (Permission.permissionValide(permissions, grantResults,
+        if (permission.permissionValide(permissions, grantResults,
                 Manifest.permission.ACCESS_FINE_LOCATION)) {
             // On active alors la localisation en réactivant le fragment map
             FragmentManager m = getSupportFragmentManager();

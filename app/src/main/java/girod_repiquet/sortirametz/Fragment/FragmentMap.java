@@ -38,7 +38,7 @@ import girod_repiquet.sortirametz.Model.Categorie;
 import girod_repiquet.sortirametz.Model.Site;
 import girod_repiquet.sortirametz.Interface.MyLocationInterface;
 import girod_repiquet.sortirametz.BDD.MySQLiteHelper;
-import girod_repiquet.sortirametz.Permission;
+import girod_repiquet.sortirametz.PermissionUtils;
 import girod_repiquet.sortirametz.R;
 
 import static android.content.Context.LOCATION_SERVICE;
@@ -65,6 +65,8 @@ public class FragmentMap extends Fragment implements
     private List<Categorie> categories;
 
     private MyLocationInterface myLocationInterface;
+
+    private PermissionUtils permission = new PermissionUtils();
 
     public FragmentMap(){
 
@@ -154,7 +156,7 @@ public class FragmentMap extends Fragment implements
      */
     public void activerLocalisation(){
         if(ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
-            Permission.demandePermission(this.getActivity(),1, Manifest.permission.ACCESS_FINE_LOCATION, true);
+            permission.demandePermission(this.getActivity(),1, Manifest.permission.ACCESS_FINE_LOCATION, true);
         } else if(mMap != null){
             mMap.setMyLocationEnabled(true);
         }
