@@ -180,6 +180,7 @@ public class FragmentMap extends Fragment implements
         adapter.setDropDownViewResource(R.layout.spinner_item);
         catSpin.setAdapter(adapter);
 
+        categoriesDAO.close();
         dbHelper.closeDB();
 
     }
@@ -259,9 +260,11 @@ public class FragmentMap extends Fragment implements
 
                 }
             }
+
+            sitesDAO.close();
+            dbHelper.closeDB();
         }
 
-        dbHelper.closeDB();
     }
 
     /**

@@ -12,7 +12,7 @@ import girod_repiquet.sortirametz.FragmentBDDManager;
 
 public class ListenerButtonValidDel implements DialogInterface.OnClickListener {
 
-    FragmentBDDManager fragment;
+    private FragmentBDDManager fragment;
 
     public ListenerButtonValidDel(FragmentBDDManager frag){
         this.fragment = frag;

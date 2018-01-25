@@ -12,7 +12,7 @@ import girod_repiquet.sortirametz.FragmentMap;
 
 public class ListenerSpinnerCat implements OnItemSelectedListener {
 
-    FragmentMap fragment;
+    private FragmentMap fragment;
 
     public ListenerSpinnerCat(FragmentMap frag){
         this.fragment = frag;

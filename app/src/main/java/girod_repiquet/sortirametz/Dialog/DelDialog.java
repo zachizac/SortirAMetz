@@ -15,7 +15,7 @@ import girod_repiquet.sortirametz.R;
 
 public class DelDialog extends DialogFragment{
 
-    FragmentBDDManager fragment = null;
+    private FragmentBDDManager fragment = null;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

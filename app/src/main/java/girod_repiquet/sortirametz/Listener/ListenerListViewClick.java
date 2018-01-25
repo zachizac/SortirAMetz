@@ -13,7 +13,7 @@ import girod_repiquet.sortirametz.FragmentMap;
 
 public class ListenerListViewClick implements OnItemClickListener {
 
-    FragmentBDDManager fragment;
+    private FragmentBDDManager fragment;
 
     public ListenerListViewClick(FragmentBDDManager fragment){
         this.fragment = fragment;

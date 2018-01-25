@@ -15,7 +15,7 @@ import girod_repiquet.sortirametz.R;
 
 public class ListenerButtonMap implements Button.OnClickListener{
 
-    MainActivity activity;
+    private MainActivity activity;
 
     public ListenerButtonMap(MainActivity act){
         this.activity = act;

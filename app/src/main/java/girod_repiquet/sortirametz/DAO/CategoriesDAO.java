@@ -40,10 +40,10 @@ public class CategoriesDAO {
 
     /**
      * Fonction de création d'une catégorie dans la base de données
-     * @param nom
+     * @param nom de la nouvelle catégorie
      * @return la catégorie crée
      */
-    public Categorie createCategorie(String nom) {
+    private Categorie createCategorie(String nom) {
 
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_NOM, nom);
@@ -64,9 +64,9 @@ public class CategoriesDAO {
 
     /**
      * Fonction pour supprimer une catégorie de la base de données
-     * @param categorie
+     * @param categorie a supprimer
      */
-    public void deleteCategorie(Categorie categorie) {
+    private void deleteCategorie(Categorie categorie) {
         long id = categorie.getId();
         System.out.println("Categorie " + id + "a été supprimée !");
         database.delete(MySQLiteHelper.TABLE_CATEGORIES, MySQLiteHelper.COLUMN_ID
@@ -79,7 +79,7 @@ public class CategoriesDAO {
      */
     public List<String> getAllCategoriesNames() {
 
-        List<String> categories = new ArrayList<String>();
+        List<String> categories = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_CATEGORIES,
                 allColumns, null, null, null, null, null);
@@ -102,7 +102,7 @@ public class CategoriesDAO {
      */
     public List<Categorie> getAllCategories() {
 
-        List<Categorie> categories = new ArrayList<Categorie>();
+        List<Categorie> categories = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_CATEGORIES,
                 allColumns, null, null, null, null, null);
@@ -119,8 +119,8 @@ public class CategoriesDAO {
 
     /**
      * Fonction pour récuperer une catégorie avec son id
-     * @param id
-     * @return
+     * @param id de la catégorie recherchée
+     * @return la catégorie correspondante
      */
     public Categorie getCatWithId(Long id){
 
@@ -138,8 +138,8 @@ public class CategoriesDAO {
 
     /**
      * Fonction pour récuperer une catégorie avec son id
-     * @param nom
-     * @return
+     * @param nom de la catégorie recherchée
+     * @return la catégorie correspondante
      */
     public Categorie getCatWithNom(String nom){
 
@@ -157,8 +157,8 @@ public class CategoriesDAO {
 
     /**
      * Fonction pour convertir un cursor en categorie
-     * @param cursor
-     * @return
+     * @param cursor de navigation dans la BDD
+     * @return la catégorie
      */
     private Categorie cursorToCategorie(Cursor cursor) {
         Categorie categorie = new Categorie();
@@ -173,11 +173,11 @@ public class CategoriesDAO {
      */
     public void initCat(){
 
-        Categorie categorie0 = createCategorie("Catégorie");
-        Categorie categorie1 = createCategorie("Restaurant");
-        Categorie categorie2 = createCategorie("Bar");
-        Categorie categorie3 = createCategorie("Hotel");
-        Categorie categorie4 = createCategorie("Eglise");
+        createCategorie("Catégorie");
+        createCategorie("Restaurant");
+        createCategorie("Bar");
+        createCategorie("Hotel");
+        createCategorie("Eglise");
 
     }
 

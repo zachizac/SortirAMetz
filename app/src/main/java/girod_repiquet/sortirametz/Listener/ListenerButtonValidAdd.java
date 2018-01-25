@@ -12,13 +12,13 @@ import girod_repiquet.sortirametz.FragmentBDDManager;
 
 public class ListenerButtonValidAdd implements DialogInterface.OnClickListener{
 
-    FragmentBDDManager fragment;
-    AddDialog dialog;
+    private FragmentBDDManager fragment;
+    private AddDialog dialog;
 
-    String categorie;
-    String nom;
-    String adresse;
-    String resume;
+    private String categorie;
+    private String nom;
+    private String adresse;
+    private String resume;
 
 
     public ListenerButtonValidAdd(FragmentBDDManager frag, AddDialog dial){

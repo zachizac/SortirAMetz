@@ -14,7 +14,7 @@ import girod_repiquet.sortirametz.R;
 
 public class ListenerButtonBDD implements Button.OnClickListener{
 
-    MainActivity activity;
+    private MainActivity activity;
 
     public ListenerButtonBDD(MainActivity act){
         this.activity = act;

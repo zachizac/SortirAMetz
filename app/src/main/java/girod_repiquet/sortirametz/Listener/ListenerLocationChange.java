@@ -15,7 +15,7 @@ import girod_repiquet.sortirametz.FragmentMap;
 
 public class ListenerLocationChange implements LocationListener {
 
-    FragmentMap fragment;
+    private FragmentMap fragment;
     //GoogleMap map;
 
    public ListenerLocationChange(FragmentMap frag){

@@ -1,6 +1,5 @@
 package girod_repiquet.sortirametz;
 
-import android.app.Dialog;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -29,7 +27,6 @@ import girod_repiquet.sortirametz.Model.Site;
 
 public class FragmentBDDManager extends Fragment {
 
-    private MySQLiteHelper dbHelper;
     private CategoriesDAO categoriesDAO;
     private SitesDAO sitesDAO;
 
@@ -58,7 +55,7 @@ public class FragmentBDDManager extends Fragment {
     public void onStart() {
         super.onStart();
 
-        dbHelper = new MySQLiteHelper(this.getActivity());
+        MySQLiteHelper dbHelper = new MySQLiteHelper(this.getActivity());
         //dbHelper.onUpgrade(dbHelper.getWritableDatabase(),1,2);
         sitesDAO = new SitesDAO(dbHelper);
         categoriesDAO = new CategoriesDAO(dbHelper);
@@ -88,6 +85,10 @@ public class FragmentBDDManager extends Fragment {
 
         listBDD.setAdapter(adapter);
         listBDD.setOnItemClickListener(new ListenerListViewClick(this));
+
+        sitesDAO.close();
+        categoriesDAO.close();
+        dbHelper.closeDB();
     }
 
 

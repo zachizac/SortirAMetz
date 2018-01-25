@@ -28,7 +28,7 @@ public class AddDialog extends DialogFragment {
 
     private MySQLiteHelper dbHelper;
     private CategoriesDAO categoriesDAO;
-    FragmentBDDManager fragment = null;
+    private FragmentBDDManager fragment = null;
 
     private Spinner addSpinner;
     private EditText nom;
