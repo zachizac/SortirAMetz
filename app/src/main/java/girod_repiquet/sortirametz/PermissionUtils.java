@@ -1,21 +1,10 @@
 package girod_repiquet.sortirametz;
 
-import android.Manifest;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
 
-import girod_repiquet.sortirametz.Fragment.Dialog.AddDialog;
 import girod_repiquet.sortirametz.Fragment.Dialog.RationaleDialog;
-import girod_repiquet.sortirametz.Listener.ListenerButtonPermission;
-
-import static girod_repiquet.sortirametz.Fragment.Dialog.RationaleDialog.newInstance;
 
 /**
  * Created by Zachizac on 21/01/2018.
