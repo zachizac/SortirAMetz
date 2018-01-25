@@ -35,6 +35,7 @@ public class ListenerButtonValidAdd implements DialogInterface.OnClickListener{
 
         if(this.categorie.equals("Catégorie")){
             ErrDialog errDialog = new ErrDialog();
+            errDialog.setFragment(this.fragment);
             errDialog.show(dialog.getFragmentManager(), "Erreur");
         }else{
             fragment.createSite(this.categorie,this.nom,this.adresse,this.resume);

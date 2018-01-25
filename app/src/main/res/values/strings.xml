@@ -19,7 +19,7 @@
     <string name="category">Catégorie du site</string>
 
     <!--    Err dialog      -->
-    <string name="errDialog">Vous ne pouvez pas créer de site sans catégorie !</string>
+    <string name="errDialog">Vous ne pouvez pas créer de site sans renseigner de catégorie !</string>
     <string name="ok2">Ok</string>
 
 </resources>
