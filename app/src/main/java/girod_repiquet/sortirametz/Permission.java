@@ -11,6 +11,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
+import girod_repiquet.sortirametz.Listener.ListenerButtonPermission;
+
 /**
  * Created by Zachizac on 21/01/2018.
  */
@@ -89,17 +91,7 @@ public abstract class Permission {
 
             return new AlertDialog.Builder(getActivity())
                     .setMessage(R.string.permission_motif)
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Après le clic sur Ok : demander la permission
-                            ActivityCompat.requestPermissions(getActivity(),
-                                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                    requestCode);
-                            // L'application ne ferme pas car le code est demandé
-                            mFermeActivite = false;
-                        }
-                    })
+                    .setPositiveButton(android.R.string.ok, new ListenerButtonPermission(this))
                     .setNegativeButton(android.R.string.cancel, null)
                     .create();
         }
@@ -120,6 +112,10 @@ public abstract class Permission {
                     getActivity().finish();
                 }
             }
+        }
+
+        public void setmFermeActivite(boolean b){
+            this.mFermeActivite = b;
         }
     }
 
