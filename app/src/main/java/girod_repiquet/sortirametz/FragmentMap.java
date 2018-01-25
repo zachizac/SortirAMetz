@@ -193,6 +193,7 @@ public class FragmentMap extends Fragment implements
 
         List<String> values = new ArrayList<String>();
         values.add("Rayon");
+        values.add("5");
         values.add("200");
         values.add("500");
         values.add("1000");
