@@ -86,6 +86,9 @@ public class FragmentMap extends Fragment implements
         selectedCat = null;
         selectedRayon = 0;
 
+        fillCatSpinner();
+        fillRaySpinner();
+
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -93,15 +96,9 @@ public class FragmentMap extends Fragment implements
         LocationManager locM = (LocationManager) this.getActivity().getSystemService(LOCATION_SERVICE);
 
         try {
-            locM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 1, new ListenerLocationChange(this));
+            locM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, new ListenerLocationChange(this));
         }catch(SecurityException e){
         }
-
-        fillCatSpinner();
-        fillRaySpinner();
-
-        catSpin.setOnItemSelectedListener(new ListenerSpinnerCat(this));
-        raySpin.setOnItemSelectedListener(new ListenerSpinnerRay(this));
 
     }
 
@@ -187,6 +184,8 @@ public class FragmentMap extends Fragment implements
         adapter.setDropDownViewResource(R.layout.spinner_item);
         catSpin.setAdapter(adapter);
 
+        catSpin.setOnItemSelectedListener(new ListenerSpinnerCat(this));
+
         categoriesDAO.close();
         dbHelper.closeDB();
 
@@ -210,6 +209,8 @@ public class FragmentMap extends Fragment implements
         ArrayAdapter <String> adapter = new ArrayAdapter<String>(this.getActivity().getApplicationContext(), R.layout.spinner_item, values);
         adapter.setDropDownViewResource(R.layout.spinner_item);
         raySpin.setAdapter(adapter);
+
+        raySpin.setOnItemSelectedListener(new ListenerSpinnerRay(this));
     }
 
     /**
@@ -307,14 +308,6 @@ public class FragmentMap extends Fragment implements
                             + "\nDistance : " + (int)loc.distanceTo(siteLocation) + " mètres"));
         }
     }
-
-//    /**
-//     * Fonction pour assurer la mise à jour de la localisation dans l'activité principale
-//     * @param location
-//     */
-//    public void updateLocation(Location location){
-//        this.getActivity().setLocation(location);
-//    }
 
     public void setSelectedCat(Categorie selectedCat) {
         this.selectedCat = selectedCat;
