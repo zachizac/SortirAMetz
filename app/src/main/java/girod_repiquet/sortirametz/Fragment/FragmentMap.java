@@ -213,7 +213,7 @@ public class FragmentMap extends Fragment implements
 
         raySpin.setOnItemSelectedListener(new ListenerSpinnerRay(this));
     }
-
+ 
     /**
      * Methode pour récupérer la localisation de l'appareil
      * @return
