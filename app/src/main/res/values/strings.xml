@@ -2,6 +2,29 @@
     <string name="app_name">SortirAMetz</string>
     <string name="title_activity_maps">SortirAMetz</string>
 
+    <!--    Activity       -->
+    <string name="bdd">Base de Données</string>
+    <string name="map">Map</string>
+
+    <!--    Map Fragment   -->
+    <string name="rayon">Rayon</string>
+    <string name="dist1">5</string>
+    <string name="dist2">100</string>
+    <string name="dist3">200</string>
+    <string name="dist4">500</string>
+    <string name="dist5">1000</string>
+    <string name="dist6">2000</string>
+
+    <!--    Popup          -->
+    <string name="resumePop">Résumé :</string>
+    <string name="adressePop">\nAdresse :</string>
+    <string name="distancePop">\nDistance :</string>
+    <string name="metre">mètres</string>
+
+    <!--    BDD Fragment   -->
+    <string name="add">Ajouter</string>
+    <string name="del">Supprimer</string>
+
     <!--    Permissions    -->
     <string name="permission_motif">La localisation est nécessaire pour pouvoir utiliser cette application car elle utilise un googleMap.</string>
     <string name="location_permission_denied">La localisation est nécessaire pour pouvoir utiliser cette application. Merci de réouvrir cette application et accepter l\'accès à la localisation.</string>

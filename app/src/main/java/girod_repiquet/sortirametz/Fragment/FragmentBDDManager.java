@@ -107,18 +107,23 @@ public class FragmentBDDManager extends Fragment {
      * Supprimer un site sélectionner dans la listView
      */
     public void delSelectedSite(){
+        this.sitesDAO.open();
         this.sitesDAO.deleteSite(selectedSite);
         selectedSite = null;
         this.getDelButton().setEnabled(false);
         this.onStart();
+        sitesDAO.close();
     }
 
     /**
      * Créer un nouveau site
      */
     public void createSite(String categorie, String nom, String adresse, String resume){
-
+        this.sitesDAO.open();
+        this.categoriesDAO.open();
         this.sitesDAO.createSite(nom, myLocation.getLatitude(), myLocation.getLongitude() ,adresse, categoriesDAO.getCatWithNom(categorie), resume);
+        this.categoriesDAO.close();
+        this.sitesDAO.close();
 
     }
 

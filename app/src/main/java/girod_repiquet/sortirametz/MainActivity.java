@@ -65,20 +65,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
 
         if(fragActif.equals("map")) {
         }else {
-            FragmentManager m = getSupportFragmentManager();
-            FragmentTransaction ft = m.beginTransaction();
-
-            ft.replace(R.id.contentView, db_frag);
-            ft.addToBackStack(null);
-
-            ft.commit();
-
-            m = getSupportFragmentManager();
-            ft = m.beginTransaction();
-            ft.replace(R.id.contentView, map_frag);
-            ft.addToBackStack(null);
-
-            ft.commit();
+            refreshMap();
         }
     }
 
@@ -100,20 +87,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
         if (permission.permissionValide(permissions, grantResults,
                 Manifest.permission.ACCESS_FINE_LOCATION)) {
             // On active alors la localisation en réactivant le fragment map
-            FragmentManager m = getSupportFragmentManager();
-            FragmentTransaction ft = m.beginTransaction();
-
-            ft.replace(R.id.contentView, db_frag);
-            ft.addToBackStack(null);
-
-            ft.commit();
-
-            m = getSupportFragmentManager();
-            ft = m.beginTransaction();
-            ft.replace(R.id.contentView, map_frag);
-            ft.addToBackStack(null);
-
-            ft.commit();
+            refreshMap();
         } else {
             // Display the missing permission error dialog when the fragments resume.
             permissionValide = true;
@@ -125,8 +99,7 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
     public void setLocation(Location loc){
 
         db_frag.updateLocation(loc);
-//        FragmentBDDManager frag = (FragmentBDDManager)getSupportFragmentManager().findFragmentById(R.id.contentView);
-//        frag.updateLocation(loc);
+
     }
 
     public Fragment getDb_frag() {
@@ -135,6 +108,28 @@ public class MainActivity extends FragmentActivity implements MyLocationInterfac
 
     public Fragment getMap_frag() {
         return map_frag;
+    }
+
+    /**
+     * fonction pour forcer un resume de la map
+     */
+    public void refreshMap(){
+        FragmentManager m = getSupportFragmentManager();
+        FragmentTransaction ft = m.beginTransaction();
+
+        ft.replace(R.id.contentView, db_frag);
+        ft.addToBackStack(null);
+
+        ft.commit();
+
+        m = getSupportFragmentManager();
+        ft = m.beginTransaction();
+        ft.replace(R.id.contentView, map_frag);
+        ft.addToBackStack(null);
+
+        ft.commit();
+
+        fragActif = "map";
     }
 
     public void setFragActif(String fragActif) {

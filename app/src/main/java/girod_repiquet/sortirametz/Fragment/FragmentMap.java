@@ -88,6 +88,9 @@ public class FragmentMap extends Fragment implements
         selectedCat = null;
         selectedRayon = 0;
 
+        fillCatSpinner();
+        fillRaySpinner();
+
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -95,15 +98,9 @@ public class FragmentMap extends Fragment implements
         LocationManager locM = (LocationManager) this.getActivity().getSystemService(LOCATION_SERVICE);
 
         try {
-            locM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 1, new ListenerLocationChange(this));
+            locM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, new ListenerLocationChange(this));
         }catch(SecurityException e){
         }
-
-        fillCatSpinner();
-        fillRaySpinner();
-
-        catSpin.setOnItemSelectedListener(new ListenerSpinnerCat(this));
-        raySpin.setOnItemSelectedListener(new ListenerSpinnerRay(this));
 
     }
 
@@ -197,6 +194,8 @@ public class FragmentMap extends Fragment implements
         adapter.setDropDownViewResource(R.layout.spinner_item);
         catSpin.setAdapter(adapter);
 
+        catSpin.setOnItemSelectedListener(new ListenerSpinnerCat(this));
+
         categoriesDAO.close();
         dbHelper.closeDB();
 
@@ -210,18 +209,21 @@ public class FragmentMap extends Fragment implements
         raySpin = this.getView().findViewById(R.id.rayonSpinner);
 
         List<String> values = new ArrayList<String>();
-        values.add("Rayon");
-        values.add("5");
-        values.add("200");
-        values.add("500");
-        values.add("1000");
-        values.add("1500");
+        values.add(getString(R.string.rayon));
+        values.add(getString(R.string.dist1));
+        values.add(getString(R.string.dist2));
+        values.add(getString(R.string.dist3));
+        values.add(getString(R.string.dist4));
+        values.add(getString(R.string.dist5));
+        values.add(getString(R.string.dist6));
 
         ArrayAdapter <String> adapter = new ArrayAdapter<String>(this.getActivity().getApplicationContext(), R.layout.spinner_item, values);
         adapter.setDropDownViewResource(R.layout.spinner_item);
         raySpin.setAdapter(adapter);
-    }
 
+        raySpin.setOnItemSelectedListener(new ListenerSpinnerRay(this));
+    }
+ 
     /**
      * Methode pour récupérer la localisation de l'appareil
      * @return
@@ -307,9 +309,9 @@ public class FragmentMap extends Fragment implements
 
         if (selectedCat.getId() == site.getCategorie() && loc.distanceTo(siteLocation) <= selectedRayon) {
             mMap.addMarker(new MarkerOptions().position(latLng).title(site.getNom())
-                    .snippet("Résumé : " + site.getResume()
-                            + "\nAdresse : " + site.getAdressePostal()
-                            + "\nDistance : " + (int)loc.distanceTo(siteLocation) + " mètres"));
+                    .snippet(getString(R.string.resumePop) + " " + site.getResume()
+                            + getString(R.string.adressePop) + " " + site.getAdressePostal()
+                            + getString(R.string.distancePop) + " " + (int)loc.distanceTo(siteLocation) + " " + getString(R.string.metre)));
         }
     }
 
