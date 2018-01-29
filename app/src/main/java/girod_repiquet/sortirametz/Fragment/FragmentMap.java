@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -65,6 +66,7 @@ public class FragmentMap extends Fragment implements
     private List<Categorie> categories;
 
     private MyLocationInterface myLocationInterface;
+    private Location myLoc;
 
     private PermissionUtils permission = new PermissionUtils();
 
@@ -114,6 +116,13 @@ public class FragmentMap extends Fragment implements
         mMap.setInfoWindowAdapter(new PopupAdapter(getLayoutInflater()));
         mMap.setOnInfoWindowClickListener(this);
 
+
+        myLoc = getMyLocation();
+        if(myLoc != null) {
+            changeCamera();
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        }
+
     }
 
     /**
@@ -148,6 +157,7 @@ public class FragmentMap extends Fragment implements
 
     public void updateLocation(Location loc){
         myLocationInterface.setLocation(loc);
+        myLoc = loc;
     }
 
 
@@ -254,22 +264,17 @@ public class FragmentMap extends Fragment implements
                 values = sitesDAO.getAllSites();
             }
 
-            Location loc;
 
             if(ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
-                loc = null;
-            }else{
-                loc = getMyLocation();
+                myLoc = null;
             }
 
-            updateLocation(loc);
-
             //on évite de placer des marqueurs si on ne connait pas la localisation de l'appareil (bug par exemple)
-            if(loc != null) {
+            if(myLoc != null && selectedCat != null) {
 
                 for (int i = 0; i <= values.size() - 1; i++) {
 
-                    creerMarker(loc, values.get(i));
+                    creerMarker(myLoc, values.get(i));
 
                 }
             }
@@ -308,14 +313,6 @@ public class FragmentMap extends Fragment implements
         }
     }
 
-//    /**
-//     * Fonction pour assurer la mise à jour de la localisation dans l'activité principale
-//     * @param location
-//     */
-//    public void updateLocation(Location location){
-//        this.getActivity().setLocation(location);
-//    }
-
     public void setSelectedCat(Categorie selectedCat) {
         this.selectedCat = selectedCat;
     }
@@ -328,7 +325,18 @@ public class FragmentMap extends Fragment implements
         return categories;
     }
 
-    public GoogleMap getmMap() {
-        return mMap;
+    public void changeCamera(){
+        // Get latitude of the current location
+        double latitude = this.myLoc.getLatitude();
+
+        // Get longitude of the current location
+        double longitude = this.myLoc.getLongitude();
+
+        // Create a LatLng object for the current location
+        LatLng latLng = new LatLng(latitude, longitude);
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        afficherSites();
     }
 }

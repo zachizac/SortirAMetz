@@ -24,20 +24,11 @@ public class ListenerLocationChange implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        // Get latitude of the current location
-        double latitude = location.getLatitude();
 
-        // Get longitude of the current location
-        double longitude = location.getLongitude();
+       fragment.changeCamera();
 
-        // Create a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
+       fragment.updateLocation(location);
 
-        fragment.getmMap().moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-        fragment.getmMap().animateCamera(CameraUpdateFactory.zoomTo(15));
-
-        fragment.updateLocation(location);
     }
 
     @Override
