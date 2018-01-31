@@ -133,7 +133,8 @@ public class FragmentMap extends Fragment implements
 
     /**
      * Gestion de la localisation en dehors du fragment map
-      * @param context
+     * pour créer des sites avec la localisation actuelle de l'utilisateur
+     * @param context
      */
     @Override
     public void onAttach(Context context){
@@ -152,6 +153,10 @@ public class FragmentMap extends Fragment implements
         super.onDetach();
     }
 
+    /**
+     * met à jour la localisation dans le mainActivity
+     * @param loc
+     */
     public void updateLocation(Location loc){
         myLocationInterface.setLocation(loc);
         myLoc = loc;
@@ -170,7 +175,7 @@ public class FragmentMap extends Fragment implements
     }
 
     /**
-     * Remplir le spinner de categorie
+     * Remplir le spinner de categorie depuis la base de données avec un curseur
      */
     public void fillCatSpinner(){
 
@@ -230,18 +235,22 @@ public class FragmentMap extends Fragment implements
      */
     @SuppressLint("MissingPermission")
     public Location getMyLocation() {
+        LocationManager lm;
+        Location myLocation = null;
         // Get location from GPS if it's available
-        LocationManager lm = (LocationManager)this.getActivity().getSystemService(Context.LOCATION_SERVICE);
-        Location myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED) {
+            lm = (LocationManager) this.getActivity().getSystemService(Context.LOCATION_SERVICE);
+            myLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-        // Location wasn't found, check the next most accurate place for the current location
-        if (myLocation == null) {
-            Criteria criteria = new Criteria();
-            criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-            // Finds a provider that matches the criteria
-            String provider = lm.getBestProvider(criteria, true);
-            // Use the provider to get the last known location
-            myLocation = lm.getLastKnownLocation(provider);
+            // Location wasn't found, check the next most accurate place for the current location
+            if (myLocation == null) {
+                Criteria criteria = new Criteria();
+                criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+                // Finds a provider that matches the criteria
+                String provider = lm.getBestProvider(criteria, true);
+                // Use the provider to get the last known location
+                myLocation = lm.getLastKnownLocation(provider);
+            }
         }
 
         return myLocation;
