@@ -98,7 +98,7 @@ public class FragmentMap extends Fragment implements
         LocationManager locM = (LocationManager) this.getActivity().getSystemService(LOCATION_SERVICE);
 
         try {
-            locM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, new ListenerLocationChange(this));
+            locM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 5, new ListenerLocationChange(this));
         }catch(SecurityException e){
         }
 
@@ -117,6 +117,7 @@ public class FragmentMap extends Fragment implements
         myLoc = getMyLocation();
         if(myLoc != null) {
             changeCamera();
+            updateLocation(myLoc);
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
 

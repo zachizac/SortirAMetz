@@ -178,6 +178,7 @@ public class CategoriesDAO {
         createCategorie("Bar");
         createCategorie("Hotel");
         createCategorie("Eglise");
+        createCategorie("Coin de pêche");
 
     }
 
